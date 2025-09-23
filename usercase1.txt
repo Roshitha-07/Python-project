@@ -1,0 +1,89 @@
+import csv
+import os
+
+FILE = 'students.csv'
+Details = ['RollNo', 'Name', 'Branch', 'Year', 'Age', 'Gender', 'Attendance', 'Marks']
+
+def load_students():
+    students = []
+    if os.path.exists(FILE):
+        with open(FILE, newline='') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                students.append(row)
+    return students
+
+def save_student(student):
+    file_exists = os.path.exists(FILE)
+    with open(FILE, 'a', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=Details)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow(student)
+
+def rollno_exists(students, rollno):
+    for s in students:
+        if s['RollNo'] == str(rollno):
+            return True
+    return False
+
+def validate(rollno, attendance, marks):
+    errors = []
+    try:
+        int(rollno)
+    except:
+        errors.append("Roll No must be an integer.")
+    try:
+        att = int(attendance)
+        if att < 0 or att > 100:
+            errors.append("Attendance must be 0 to 100.")
+    except:
+        errors.append("Attendance must be an integer.")
+    try:
+        m = float(marks)
+        if m < 0 or m > 100:
+            errors.append("Marks must be 0 to 100.")
+    except:
+        errors.append("Marks must be a number.")
+    return errors
+
+def add_student():
+    students = load_students()
+
+    rollno = input("Roll No: ").strip()
+    if rollno_exists(students, rollno):
+        print(f"Roll No {rollno} already exists!")
+        return
+
+    name = input("Name: ").strip()
+    branch = input("Branch: ").strip()
+    year = input("Year: ").strip()
+    age = input("Age: ").strip()
+    gender = input("Gender (M/F): ").strip()
+    attendance = input("Attendance (0-100): ").strip()
+    marks = input("Marks (0-100): ").strip()
+
+    errors = validate(rollno, attendance, marks)
+    if errors:
+        print("Errors:")
+        for e in errors:
+            print("-", e)
+        return
+
+    student = {
+        'RollNo': str(int(rollno)),
+        'Name': name,
+        'Branch': branch,
+        'Year': year,
+        'Age': age,
+        'Gender': gender,
+        'Attendance': str(int(attendance)),
+        'Marks': str(float(marks))
+    }
+    save_student(student)
+    print(f"Student {name} added successfully.")
+
+
+if __name__ == "__main__":
+    print(" Student Management System : Add Student")
+    add_student()
