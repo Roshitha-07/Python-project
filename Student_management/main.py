@@ -1,6 +1,6 @@
-from clerk.add_students import add_student
+from  add_students import add_student
 # from clerk.delete_student import delete_student
- # from faculty.lookup_student import lookup_student
+from faculty.search_student import search_student
 # from faculty.update_student import update_student
 # from hod.summary_reports import generate_summary
 
@@ -34,7 +34,7 @@ def faculty_menu():
         print("3. Back")
         ch = input("Choice: ")
         if ch == "1":
-            lookup_student()
+            search_student()
         elif ch == "2":
             update_student()
         elif ch == "3":
