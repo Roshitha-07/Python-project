@@ -2,8 +2,8 @@ from clerk.clerk.add_student import add_student
 from clerk.clerk.delete_student import delete_student
 from clerk.faculty.search_student import search_student
 from clerk.faculty.update_student import update_student
-from clerk.Hod.generate_summary import generate_summary
-from clerk.Hod.bulk_import import bulk_import
+from clerk.Hod.Admin.generate_summary import generate_summary
+from clerk.Hod.Admin.bulk_import import bulk_import
 from clerk.utils.constants import CSV_FILE
 
 def role_menu():
