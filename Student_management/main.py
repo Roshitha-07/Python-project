@@ -1,10 +1,10 @@
-from clerk.add_student import add_student
-from clerk.delete_student import delete_student
-from faculty.search_student import search_student
-from faculty.update_student import update_student
-from Hod.summary_reports import generate_summary
-from utils.constants import CSV_FILE
-
+from clerk.clerk.add_student import add_student
+from clerk.clerk.delete_student import delete_student
+from clerk.faculty.search_student import search_student
+from clerk.faculty.update_student import update_student
+from clerk.Hod.generate_summary import generate_summary
+from clerk.Hod.bulk_import import bulk_import
+from clerk.utils.constants import CSV_FILE
 
 def role_menu():
     print("\n Login as ")
@@ -46,11 +46,14 @@ def hod_menu():
     while True:
         print("\n HOD Menu ")
         print("1. Generate Summary Report")
-        print("2. Back")
+        print("2. bulk data")
+        print("3. Back")
         ch = input("Choice: ")
         if ch == "1":
             generate_summary()
-        elif ch == "2":
+        elif ch=='2':
+            bulk_import()    
+        elif ch == "3":
             break
 
 def main():

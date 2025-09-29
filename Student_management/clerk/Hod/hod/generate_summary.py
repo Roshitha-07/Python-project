@@ -46,11 +46,11 @@ def generate_summary():
                     students.append(row)
                     totals.append(total)
     except FileNotFoundError:
-        print(f"❌ {CSV_FILE} not found.")
+        print(f" {CSV_FILE} not found.")
         return
 
     if not students:
-        print("⚠️ No students found for given branch/year.")
+        print(" No students found for given branch/year.")
         return
 
     # Summary calculations
@@ -64,7 +64,7 @@ def generate_summary():
         grade_distribution[s["Grade"]] += 1
 
     # Print report
-    print("\n📊 Parent-Teacher Meeting Report")
+    print("\n Parent-Teacher Meeting Report")
     print(f"Branch: {branch} | Year: {year}")
     print(f"Total Students: {total_students}")
     print(f"Average Marks: {avg_marks}")
@@ -81,4 +81,4 @@ def generate_summary():
         writer.writeheader()
         writer.writerows(students)
 
-    print(f"\n✅ Report exported to {filename}")
+    print(f"\n Report exported to {filename}")
