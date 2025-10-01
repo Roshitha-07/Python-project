@@ -5,6 +5,9 @@ from clerk.faculty.update_student import update_student
 from clerk.Hod.Admin.generate_summary import generate_summary
 from clerk.Hod.Admin.bulk_import import bulk_import
 from clerk.utils.constants import CSV_FILE
+from utils.export_data import export_view
+from faculty.sort_filter import sort_by_marks, filter_by_attendance
+
 
 def role_menu():
     print("\n Login as ")

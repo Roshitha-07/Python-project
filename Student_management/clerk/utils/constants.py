@@ -1,0 +1,6 @@
+CSV_FILE = "data/students.csv"
+
+COLUMNS = [
+    "Roll_No", "Name", "Branch", "Year", "Gender", "Age",
+    "Attendance_%", "Mid1_Marks", "Mid2_Marks", "Quiz_Marks", "Final_Marks"
+]
